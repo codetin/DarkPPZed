@@ -1,0 +1,16 @@
+{
+  "global_lsp_settings": {
+    "semantic_token_rules": [
+      { "token_type": "xmlDocCommentAttributeName", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentAttributeQuotes", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentAttributeValue", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentCDataSection", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentComment", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentDelimiter", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentEntityReference", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentName", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentProcessingInstruction", "style": ["comment.doc.xml", "comment.doc", "comment"] },
+      { "token_type": "xmlDocCommentText", "style": ["comment.doc.xml", "comment.doc", "comment"] }
+    ]
+  }
+}

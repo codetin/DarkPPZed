@@ -1,55 +1,78 @@
-# Dark++
+# Dark++ for Zed
 
-Dark++主题是基于 Dark+(vscode 默认主题)的一个自用主题。  
-因为自己用的感觉不错，所以分享出来。  
-如果大家觉得好的话请到 github 官方点赞。  
+A Zed port of [Dark++ for VS Code](https://github.com/codetin/DarkPlusPlus), featuring a charcoal background, bright green strings, cyan numbers, magenta types, and a pink selection background.
 
-+ 增强了文本以及数字的字体亮度
-+ 对于类,函数以及实体使用不同颜色进行区分
-+ 针对python语法优化
-+ 针对JavaScript以及TypeScript语法优化
+[中文说明](README.zh-CN.md)
 
+## Installation
 
-![截图](https://github.com/codetin/DarkPlusPlus/blob/master/darkplusplus/screencap.png?raw=true)
+This repository provides a local theme and a theme-only development extension. A GitHub release does **not** mean the extension has been accepted into the Zed extension registry; registry publication requires a separate review.
 
-### 语法着色示例
+### Local theme
 
-![截图](https://github.com/codetin/DarkPlusPlus/blob/master/darkplusplus/screencap2.png?raw=true)
+From the repository root (macOS / Linux):
 
-### VSCODE 界面截图
+```sh
+mkdir -p ~/.config/zed/themes
+cp themes/darkplusplus.json ~/.config/zed/themes/darkplusplus.json
+```
 
-# Github 源码
+On Windows, copy `themes/darkplusplus.json` to `%USERPROFILE%\AppData\Roaming\Zed\themes\`.
 
-## [Github](https://github.com/codetin/DarkPlusPlus.git)
+Restart Zed, run `theme selector: toggle` from the command palette, and select **Dark++**. Alternatively, set `"theme": "Dark++"` in your Zed settings.
 
-# 变更日志
+### Development extension
 
-## 0.2.1 2021 年 9 月 23 日
+1. Open the Extensions page with `zed: extensions`.
+2. Click **Install Dev Extension** and select the directory containing `extension.toml` (the repository root or the extracted release directory).
+3. Select **Dark++** in the theme selector.
 
-增加 string.quoted.docstring.multi.python 支持
+The extension ID is `darkplusplus-theme`; the theme name remains **Dark++**. This is a theme-only extension with no Rust code, WebAssembly, or language servers.
 
-## 0.1.7 2021 年 9 月 22 日
+## Palette
 
-class 颜色从 variable 中独立  
-增加 property 的颜色
+| Element | Color |
+| --- | --- |
+| Editor background / foreground | `#1E1E1E` / `#D4D4D4` |
+| Title bar | `#004583` |
+| Selection | `#A5005B` |
+| Strings | `#95FB79` |
+| Numbers | `#9FFCEA` |
+| Functions / methods | `#FCCA5E` |
+| Types / constructors | `#D802BB` |
+| Built-in types | `#569CD6` |
+| Variables | `#9CDCFE` |
+| Parameters | `#4EC9B0`, italic |
+| Properties | `#FFF3CD` |
+| Namespaces | `#00CCFF` |
+| Keywords | `#F5BA78` |
+| Operators | `#EE68AF`, bold |
+| Comments / XML documentation | `#6A9955`, italic |
 
-## 0.0.5 2021 年 2 月 18 日
+The theme also styles panels, tabs, line numbers, indent guides, search matches, diagnostics, Git status, and terminal ANSI colors. UI colors not specified by the original theme follow the VS Code Dark+ style.
 
-更新一部分颜色
-增加 TAB 的边缘色条
+## C# XML documentation comments
 
-## 0.0.4 2019-12-16
+Roslyn reports `/// <summary>...</summary>` using custom `xmlDocComment*` semantic tokens. Defining a theme color alone does not map those tokens to that color.
 
-因为实在有太多名叫 Dark++的主题，所以改名为 Dark+3 😄
+For Roslyn semantic highlighting, manually merge the rules from [`zed-csharp-settings.json`](zed-csharp-settings.json) into `global_lsp_settings.semantic_token_rules` in your Zed user settings. Preserve any existing rules and settings; do not replace your entire settings file or add a duplicate `global_lsp_settings` key.
 
-## 0.0.3 2019-12-16
+The ten rules cover documentation text, XML tags, attributes, delimiters, entities, CDATA, comments, and processing instructions. They map to `comment.doc.xml`, falling back to `comment.doc` and `comment` for other themes, and work with both `semantic_tokens: "full"` and `"combined"`. They do not change regular HTML/XML highlighting.
 
-set constant.numeric to #91afd1
+This settings file is an optional configuration example, **not** a language extension. Installing the theme does not automatically change your settings or install these mappings. Token names follow [Roslyn's definitions](https://github.com/dotnet/roslyn/blob/main/src/LanguageServer/Protocol/Handler/SemanticTokens/CustomLspSemanticTokenNames.cs).
 
-## 0.0.2 2019-12-16
+## Porting notes
 
-### meta.funtion color
+- The original VS Code files remain in the repository's `darkplusplus/` directory for reference. They are not included in the curated release ZIP and are not Zed extension resources.
+- TextMate scopes, semantic tokens, and Zed syntax captures do not map one-to-one. Functions, properties, and variables primarily follow the original semantic colors; generic types use magenta to retain the original class styling.
+- Language-specific distinctions, including Python floats and docstrings, depend on the captures supplied by Zed or the language extension. Pixel-identical highlighting is not guaranteed.
+- The original active-tab top border, active-line border, and selection border have no direct equivalents in the theme schema used here. Gold selected/focused-pane borders and an active-line background provide approximations.
+- Historical screenshots in `darkplusplus/` show VS Code, not this Zed port.
 
-## 0.0.1 2019-12-16
+## Publishing
 
-### make meta.funtion color
+See [PUBLISHING.md](PUBLISHING.md) for registry submission steps. The Zed registry builds and publishes the extension after its index pull request is reviewed and merged; it does not accept a VSIX upload.
+
+## License
+
+[MIT](LICENSE)

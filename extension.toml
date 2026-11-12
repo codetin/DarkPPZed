@@ -1,0 +1,7 @@
+id = "darkplusplus-theme"
+name = "Dark++"
+version = "0.1.0"
+schema_version = 1
+authors = ["code_tin"]
+description = "Dark++ for Zed, ported from the original VS Code theme."
+repository = "https://github.com/codetin/DarkPPZed"
