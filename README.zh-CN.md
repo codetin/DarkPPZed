@@ -28,7 +28,7 @@ Windows 用户将 `themes/darkplusplus.json` 放入 `%USERPROFILE%\AppData\Roami
 ### 方式二：开发扩展
 
 1. 打开 Zed 的扩展页面（命令面板执行 `zed: extensions`）。
-2. 点击 **Install Dev Extension**，选择本仓库根目录（包含 `extension.toml` 的目录，而非 `darkplusplus/`）。
+2. 点击 **Install Dev Extension**，选择本仓库根目录（包含 `extension.toml` 的目录）。
 3. 在主题选择器中选择 **Dark++**。
 
 这是纯主题扩展，不包含 Rust / WebAssembly 代码，也不需要构建 VSIX。以上均为本地安装方式，不代表主题已经发布到 Zed 扩展商店。
@@ -69,11 +69,11 @@ Token 名称依据 [Roslyn 的 CustomLspSemanticTokenNames](https://github.com/d
 
 ## 移植说明
 
-- 原 VS Code 主题位于 `darkplusplus/themes/dark++-color-theme.json`，保留不变。Zed 使用根目录下的 `themes/darkplusplus.json`，不能直接加载 VS Code 的主题 JSON 或 `.vsix` 文件。
+- 本仓库仅保留 Zed 主题及相关配置、文档。原 VS Code 主题、历史安装包和截图可在[原仓库](https://github.com/codetin/DarkPlusPlus)查看。Zed 使用 `themes/darkplusplus.json`，不能直接加载 VS Code 的主题 JSON 或 `.vsix` 文件。
 - VS Code 的 TextMate scope / semantic token 与 Zed 的语法捕获名称并不一一对应。函数、属性、变量等优先采用原主题的语义配色；类型统一使用原主题的紫红色，以便在未区分类与类型的语言中保留主要视觉特征。
 - 各语言实际使用的捕获名称由 Zed 或相应语言扩展决定。类与结构体的细分、Python 浮点数的独立颜色、docstring、装饰器及部分语言专属规则，不能仅靠主题保证与 VS Code 完全一致。
 - 原主题的活动标签页顶部黄线、当前行边框和选区边框没有在所用 Zed theme schema 中找到直接对应字段。这里用选中边框 / 聚焦窗格边框的金黄色和当前行背景近似表达，不声称逐像素复刻。
-- 原 VS Code 截图及历史版本仍保留在 `darkplusplus/` 中，不作为 Zed 效果预览。
+
 
 ## 项目结构
 
@@ -81,7 +81,10 @@ Token 名称依据 [Roslyn 的 CustomLspSemanticTokenNames](https://github.com/d
 extension.toml              Zed 扩展清单
 themes/darkplusplus.json     Zed 主题
 zed-csharp-settings.json     C# XML 文档注释的语义 token 映射
-darkplusplus/               原 VS Code 主题、说明、截图及历史安装包
+README.md                   英文使用说明
+README.zh-CN.md             中文使用说明
+PUBLISHING.md               Zed 扩展市场发布指南
+LICENSE                     MIT 许可证及版权声明
 ```
 
 ## License

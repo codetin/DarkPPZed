@@ -63,11 +63,11 @@ This settings file is an optional configuration example, **not** a language exte
 
 ## Porting notes
 
-- The original VS Code files remain in the repository's `darkplusplus/` directory for reference. They are not included in the curated release ZIP and are not Zed extension resources.
+- This repository contains only the Zed theme and its supporting configuration and documentation. The original VS Code theme, historical packages, and screenshots are available in the [original repository](https://github.com/codetin/DarkPlusPlus).
 - TextMate scopes, semantic tokens, and Zed syntax captures do not map one-to-one. Functions, properties, and variables primarily follow the original semantic colors; generic types use magenta to retain the original class styling.
 - Language-specific distinctions, including Python floats and docstrings, depend on the captures supplied by Zed or the language extension. Pixel-identical highlighting is not guaranteed.
 - The original active-tab top border, active-line border, and selection border have no direct equivalents in the theme schema used here. Gold selected/focused-pane borders and an active-line background provide approximations.
-- Historical screenshots in `darkplusplus/` show VS Code, not this Zed port.
+
 
 ## Publishing
 
